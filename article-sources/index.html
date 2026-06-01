@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Works Cited — Tux News — willbentedev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f2;
+      --ink: #1a1916;
+      --muted: #9e9b94;
+      --accent: #c84b2f;
+      --rule: #e0ddd8;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: 0 clamp(1.5rem, 6vw, 5rem);
+    }
+
+    /* ── MAIN ── */
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: clamp(4rem, 12vh, 8rem) 0 2rem;
+      max-width: 780px;
+    }
+
+    /* ── EYEBROW / BREADCRUMB ── */
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      animation: rise 0.6s ease forwards 0.1s;
+    }
+
+    .eyebrow a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .eyebrow a:hover { color: var(--accent); }
+    .eyebrow .sep { color: var(--rule); }
+
+    .masthead {
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
+      opacity: 0;
+      animation: rise 0.6s ease forwards 0.18s;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 7vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: rise 0.7s ease forwards 0.25s;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .standfirst {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 56ch;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: rise 0.7s ease forwards 0.36s;
+    }
+
+    /* ── SOURCES LIST ── */
+    .sources {
+      list-style: none;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+      opacity: 0;
+      animation: rise 0.7s ease forwards 0.5s;
+    }
+
+    .sources li {
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.1rem 1.5rem 1.1rem 3.25rem;
+      position: relative;
+      font-size: 0.82rem;
+      line-height: 1.75;
+      transition: background 0.15s;
+      counter-increment: src;
+    }
+
+    .sources { counter-reset: src; }
+    .sources li:last-child { border-bottom: none; }
+    .sources li:hover { background: #f0ede8; }
+
+    .sources li::before {
+      content: counter(src, decimal-leading-zero);
+      position: absolute;
+      left: 1.5rem;
+      top: 1.1rem;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .sources cite {
+      font-style: normal;
+      color: var(--ink);
+    }
+
+    .sources a {
+      color: var(--muted);
+      text-decoration: none;
+      word-break: break-word;
+      transition: color 0.2s;
+    }
+
+    .sources a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* ── PAGE NAV ── */
+    .page-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 3rem;
+      opacity: 0;
+      animation: rise 0.7s ease forwards 0.62s;
+    }
+
+    .page-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0.65rem 1.15rem;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .page-nav a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .page-nav a.primary {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+
+    .page-nav a.primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 0 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--rule);
+      margin-top: 5rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      opacity: 0;
+      animation: rise 0.6s ease forwards 0.85s;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    /* ── ANIMATION ── */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <p class="eyebrow">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/article/">Article</a>
+      <span class="sep">/</span>
+      Sources
+    </p>
+
+    <p class="masthead">Tux News &middot; Children's March</p>
+
+    <h1>Works <em>Cited.</em></h1>
+
+    <p class="standfirst">
+      The references behind &ldquo;Children's March&rdquo; — the reporting, archives, and
+      encyclopedia entries used to research Rev. James Bevel and the 1963 Birmingham Children's
+      Crusade.
+    </p>
+
+    <ol class="sources">
+      <li>
+        <cite>&ldquo;Carbajal Demands Answers on ICE Racial Profiling.&rdquo;</cite>
+        Office of U.S. Representative Salud Carbajal, 11 Sept. 2025,
+        <a href="https://carbajal.house.gov/news/documentsingle.aspx?DocumentID=3343" target="_blank" rel="noopener">carbajal.house.gov/news/documentsingle.aspx?DocumentID=3343</a>.
+      </li>
+      <li>
+        <cite>&ldquo;Children's Crusade (1963).&rdquo;</cite>
+        Wikipedia, Wikimedia Foundation,
+        <a href="https://en.wikipedia.org/wiki/Children%27s_Crusade_(1963)" target="_blank" rel="noopener">en.wikipedia.org/wiki/Children%27s_Crusade_(1963)</a>.
+      </li>
+      <li>
+        <cite>&ldquo;Civil Rights Movement History: 1963 (January–June).&rdquo;</cite>
+        Civil Rights Movement Archive,
+        <a href="https://www.crmvet.org/tim/timhis63.htm#1963bham" target="_blank" rel="noopener">www.crmvet.org/tim/timhis63.htm#1963bham</a>.
+      </li>
+      <li>
+        <cite>&ldquo;James Bevel.&rdquo;</cite>
+        Everything Explained Today,
+        <a href="https://everything.explained.today/James_Bevel/" target="_blank" rel="noopener">everything.explained.today/James_Bevel/</a>.
+      </li>
+      <li>
+        <cite>&ldquo;James Bevel.&rdquo;</cite>
+        Wikipedia, Wikimedia Foundation,
+        <a href="https://en.wikipedia.org/wiki/James_Bevel" target="_blank" rel="noopener">en.wikipedia.org/wiki/James_Bevel</a>.
+      </li>
+      <li>
+        Sanchez, Gabriel R., and Edward D. Vargas.
+        <cite>&ldquo;Racial Profiling by ICE Will Have a Marked Impact on Latino Communities.&rdquo;</cite>
+        Brookings, 16 Oct. 2025,
+        <a href="https://www.brookings.edu/articles/racial-profiling-by-ice-will-have-a-marked-impact-on-latino-communities/" target="_blank" rel="noopener">www.brookings.edu/articles/racial-profiling-by-ice-will-have-a-marked-impact-on-latino-communities/</a>.
+      </li>
+      <li>
+        <cite>&ldquo;The Strategist in the Shadows.&rdquo;</cite>
+        KOLUMN Magazine, 18 Apr. 2026,
+        <a href="https://www.kolumnmagazine.com/2026/04/18/the-strategist-in-the-shadows/" target="_blank" rel="noopener">www.kolumnmagazine.com/2026/04/18/the-strategist-in-the-shadows/</a>.
+      </li>
+      <li>
+        <cite>&ldquo;Trump-Appointed Judge Says ICE Has a 'Policy' of Racial Profiling: 'Evidence Is Compelling and Troubling.'&rdquo;</cite>
+        The Independent,
+        <a href="https://www.theindependent.com/news/world/americas/us-politics/trump-judge-ice-racial-profiling-minnesota-b2935623.html" target="_blank" rel="noopener">www.theindependent.com/news/world/americas/us-politics/trump-judge-ice-racial-profiling-minnesota-b2935623.html</a>.
+      </li>
+      <li>
+        Volle, Adam.
+        <cite>&ldquo;Birmingham Children's Crusade.&rdquo;</cite>
+        Encyclopædia Britannica, 3 May 2026,
+        <a href="https://www.britannica.com/event/Birmingham-Childrens-Crusade" target="_blank" rel="noopener">www.britannica.com/event/Birmingham-Childrens-Crusade</a>.
+      </li>
+    </ol>
+
+    <nav class="page-nav">
+      <a class="primary" href="/article/">&larr; Read the article</a>
+      <a href="/">Back home</a>
+    </nav>
+  </main>
+
+  <footer>
+    <span>willbentedev &middot; Tux News</span>
+    <span><a href="https://github.com/willbentedev" target="_blank" rel="noopener">github.com/willbentedev</a></span>
+  </footer>
+
+</body>
+</html>
