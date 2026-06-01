@@ -148,6 +148,35 @@
       max-width: none;
     }
 
+    .callout .facts {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .callout .facts li {
+      font-size: 0.82rem;
+      line-height: 1.65;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .callout .facts li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .callout .facts strong {
+      font-weight: 400;
+      color: var(--accent);
+    }
+
     /* ── PAGE NAV ── */
     .page-nav {
       display: flex;
@@ -319,6 +348,16 @@
         change. As you can probably tell, both of these examples have very similar underlying
         principles.
       </p>
+
+      <div class="callout">
+        <p class="callout-title">Children's March &middot; By the Numbers</p>
+        <ul class="facts">
+          <li>The event took place in <strong>Birmingham, Alabama</strong>, on <strong>May 2&ndash;10, 1963</strong>.</li>
+          <li>Thousands of children gathered at the <strong>16th Street Baptist Church</strong> to protest for their rights.</li>
+          <li>Organizations <strong>SCLC</strong> and <strong>ACMHR</strong> worked with the children's march.</li>
+          <li>It generated a lot of sympathy, and was a <strong>turning point</strong> of the movement.</li>
+        </ul>
+      </div>
 
     </div>
 
